@@ -1,21 +1,25 @@
 <?php
 
-function addStrings($text1,$text2){
+function addStrings($text1,$text2)
+{
     return $text1 . " " . $text2;
 }
 
-function outputSomeLetter($var,$numberOfLetter) {
+function outputSomeLetter($var,$numberOfLetter)
+{
     return substr($var, $numberOfLetter, 1) . "<br />";
-
 }
-function isNumberInRangeFromZeroToFive($number){
+
+function isNumberInRangeFromZeroToFive($number)
+{
     if ($number >= 0 && $number <= 5){
         return "Right";
     }
     return "Wrong";
 }
-function whichQuarter($min) {
 
+function whichQuarter($min)
+{
     if ($min >= 0 && $min <= 15) {
         return "first";
     } elseif ($min >= 16 && $min <= 30) {
@@ -26,7 +30,6 @@ function whichQuarter($min) {
         return "fourth";
     }
     return "Wrong. Input number from 0 to 59";
-
 }
 
 function isThisYearIntercalary($year)
@@ -39,7 +42,8 @@ function isThisYearIntercalary($year)
     return "This year isn't intercalary";
 }
 
-function isSumOfTwoPartOfStringEqual($stringOfNumbers){
+function isSumOfTwoPartOfStringEqual($stringOfNumbers)
+{
     $explodeString = preg_split('//', $stringOfNumbers, -1, PREG_SPLIT_NO_EMPTY);
     list($firstExplodeString, $secondExplodeString) = array_chunk($explodeString, 3);
     $sumOfFirstArray = array_sum($firstExplodeString);
@@ -49,7 +53,6 @@ function isSumOfTwoPartOfStringEqual($stringOfNumbers){
     } else {
         return "No. They aren't equal. First sum = $sumOfFirstArray First sum = $sumOfSecondArray";
     }
-    echo "<br/>";
 }
 
 echo "<hr />"."TASK 1.1"."<hr />"."<br />";
