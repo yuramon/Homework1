@@ -1,93 +1,90 @@
 <?php
+
+function addStrings($text1,$text2){
+    return $text1 . " " . $text2;
+}
+
+function outputSomeLetter($var,$numberOfLetter) {
+    return substr($var, $numberOfLetter, 1) . "<br />";
+
+}
+function isNumberInRangeFromZeroToFive($number){
+    if ($number >= 0 && $number <= 5){
+        return "Right";
+    }
+    return "Wrong";
+}
+function whichQuarter($min) {
+
+    if ($min >= 0 && $min <= 15) {
+        return "first";
+    } elseif ($min >= 16 && $min <= 30) {
+        return "second";
+    } elseif ($min >= 31 && $min <= 45) {
+        return "third";
+    } elseif ($min >= 46 && $min <= 59) {
+        return "fourth";
+    }
+    return "Wrong. Input number from 0 to 59";
+
+}
+
+function isThisYearIntercalary($year)
+{
+    if ($year % 4 == 0 && $year % 100 != 0) {
+        return "This year is intercalary";
+    }elseif ($year % 400 == 0){
+        return "This year is intercalary";
+    }
+    return "This year isn't intercalary";
+}
+
+function isSumOfTwoPartOfStringEqual($stringOfNumbers){
+    $explodeString = preg_split('//', $stringOfNumbers, -1, PREG_SPLIT_NO_EMPTY);
+    list($firstExplodeString, $secondExplodeString) = array_chunk($explodeString, 3);
+    $sumOfFirstArray = array_sum($firstExplodeString);
+    $sumOfSecondArray = array_sum($secondExplodeString);
+    if ($sumOfFirstArray == $sumOfSecondArray) {
+        return "Yes. They are equal. Sum = $sumOfFirstArray";
+    } else {
+        return "No. They aren't equal. First sum = $sumOfFirstArray First sum = $sumOfSecondArray";
+    }
+    echo "<br/>";
+}
+
 echo "<hr />"."TASK 1.1"."<hr />"."<br />";
-$text1='Hello';
-$text2='World';
-echo $text1." ".$text2;
+echo addStrings('Hello','World');
 
 echo "<hr />"."TASK 1.2"."<hr />"."<br />";
-$var = 'hello';
-echo substr($var,0,1)."<br />";
-echo substr($var,1,1)."<br />";
-echo substr($var,-1,1)."<br />";
+echo outputSomeLetter('hello',0);
+echo outputSomeLetter('hello',1);
+echo outputSomeLetter('hello',-1);
 
 echo "<hr />"."TASK 1.3"."<hr />"."<br />";
-if(isset($_POST["done"]))
-{
-    if ($_POST["number"] == "") {
-        echo "Please input number 5, 0, -3, 2";
-    }
-}
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>HomeTask </title></head>
-<body>
-<form name="test" action="" method="post">
+$number=[5, 0, -3, 2];
+echo isNumberInRangeFromZeroToFive($number[0])."<br />";
+echo isNumberInRangeFromZeroToFive($number[1])."<br />";
+echo isNumberInRangeFromZeroToFive($number[2])."<br />";
+echo isNumberInRangeFromZeroToFive($number[3])."<br />";
 
-    <input type="text" name="number" placeholder="Input number" /><br />
-
-    <input type= "submit" name = "done" value ="Done" />
-</form>
-</body>
-</html>
-<?php
-
-
-    echo "Your number: " . $_POST["number"] . "<br />";
-    if (isset($_POST["done"]))
-    {
-        if ($_POST["number"] >= 0 && $_POST["number"] <= 5 &&$_POST["number"]!="")
-        {
-            echo "Вірно";
-        }
-        elseif ($_POST["number"]!="")
-        {
-            echo "Невірно";
-        }
-
-    }
 echo "<hr />"."TASK 1.4"."<hr />"."<br />";
+echo "Our quarter: ";
+echo whichQuarter(15)."<br />";
+echo "Our quarter: ";
+echo whichQuarter(16)."<br />";
+echo "Our quarter: ";
+echo whichQuarter(33)."<br />";
+echo "Our quarter: ";
+echo whichQuarter(59)."<br />";
+echo "Our quarter: ";
+echo whichQuarter(60)."<br />";
 
-$min=15;
-echo "Наша змінна min= $min "."<br />"."Наша чверть: ";
-if ($min>=0 && $min<=15)
-{
-    echo "перша";
-}
-elseif ($min>=16 && $min<=30)
-{
-    echo "друга";
-}
-elseif ($min>=31 && $min<=45)
-{
-    echo "третя";
-}
-elseif  ($min>=46 && $min<=59)
-{
-    echo "четверта";
-}
-else echo "Число не є в межах від 0 до 59";
 echo "<hr />"."TASK 1.5"."<hr />"."<br />";
-
-$year =2000;
-echo "Наш рік: $year"."<br />";
-if (($year%4==0&&$year%100!=0)||$year%400==0)
-{
-    echo "Високосний рік";
-}
-else echo "Не високосний рік";
+echo isThisYearIntercalary(2012)."<br />";
+echo isThisYearIntercalary(2000)."<br />";
+echo isThisYearIntercalary(2001)."<br />";
 
 echo "<hr />"."TASK 1.6"."<hr />"."<br />";
-$stringOfNumbers="386935";
-$explodeString=preg_split('//',$stringOfNumbers, -1,PREG_SPLIT_NO_EMPTY);
-list($firstExplodeString,$secondExplodeString)=array_chunk($explodeString,3);
-$sumOfFirstArray=array_sum($firstExplodeString);
-$sumOfSecondArray=array_sum($secondExplodeString);
-if ($sumOfFirstArray==$sumOfSecondArray)
-{
-    echo "Так - строки рівні і дорівнюють $sumOfFirstArray";
-}
-else
-    echo "Ні - строки  нерівні";
+echo isSumOfTwoPartOfStringEqual("385934")."<br />";
+echo isSumOfTwoPartOfStringEqual("387934");
 ?>
