@@ -88,6 +88,8 @@ echo isThisYearIntercalary(2000)."<br />";
 echo isThisYearIntercalary(2001)."<br />";
 
 echo "<hr />"."TASK 1.6"."<hr />"."<br />";
+$str='привет';
+echo strlen(iconv('UTF-8', 'ISO-8859-5',$str));
 echo isSumOfTwoPartOfStringEqual("385934")."<br />";
 echo isSumOfTwoPartOfStringEqual("387934");
 ?>
